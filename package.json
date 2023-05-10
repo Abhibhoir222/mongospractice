@@ -1,0 +1,22 @@
+{
+  "name": "mongospractice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abhibhoir222/mongospractice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abhibhoir222/mongospractice/issues"
+  },
+  "homepage": "https://github.com/Abhibhoir222/mongospractice#readme",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
