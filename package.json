@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Abhibhoir222/mongospractice#readme",
   "dependencies": {
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "mongoose": "^7.1.0",
+    "nodemon": "^2.0.22"
   }
 }
