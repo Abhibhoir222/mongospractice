@@ -1,35 +1,39 @@
-const mongoose = require('mongoose');
+const express = require("express");
+require("./config");
+const product = require("./product");
 
- mongoose.connect("mongodb://localhost:27017/e-comm")
-const ProductsSchema = new mongoose.Schema({
-    name:String,
-    price:Number,
-    brand:String,
-    category:String
+const app = express();
+app.use(express.json());
+
+
+app.post("/create", async(req, resp) => {
+    let data = new product(req.body);
+    let result = await data.save()
+    console.log(result);
+  resp.send(result);
 });
 
-const saveInDB = async ()=>{
-    const ProductsModel = mongoose.model('products',ProductsSchema);
-    let data = new ProductsModel({
-        name:"m8",
-        price:500,
-        brand:"Samsung",
-        category:"Mobile"
-    });
-    let result = await data.save();
-    console.log(result);
+app.get("/list",async(req,resp)=>{
+    let data = await product.find();
+    resp.send(data);
+})
 
-}
+app.delete("/delete/:_id", async(req,resp)=>{
+    let data = await product.deleteOne(req.params)
+    console.log(req.params);
+    resp.send(data);
+})
 
-const updateInDB = async ()=>{
-    const product =  mongoose.model('products',ProductsSchema);
+app.put("/update/:_id",async(req,resp)=>{
+    console.log(req.params);
     let data = await product.updateOne(
-        {name:"note 6"},
+        req.params,
         {
-            $set:{price:500}
+            $set:req.body
         }
-    )
-    console.log(data);
-}
 
-updateInDB()
+        )
+    resp.send(data)
+})
+
+app.listen(5000);
